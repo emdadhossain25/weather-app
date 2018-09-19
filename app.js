@@ -1,12 +1,18 @@
 const request = require('request');
 
 request({
-    url:'https://maps.googleapis.com/maps/api/geocode/json?address=dhanmondi',
+    url:'https://reqres.in/api/users?page=2',
     json: true
 
 
 }, (error, response, body) =>{
 
-    console.log(JSON.stringify(body, undefined, 2))
+    // the data that comes back from http request is called - body
+    console.log(JSON.stringify(response, undefined, 2))
+
+
+    // response sends back the statusCode which related to requesting server
+
+    // error object retruns ENOTFOUND
 
 })
