@@ -35,16 +35,19 @@ request({
 }, (error, response, body) => {
 
 
-    // iterating foreach function call for all the elements in body type
-    body.data.forEach(function (t) {
-        console.log('-----------------------')
-        console.log('\n')
-        console.log(`id: ${t.id} `);
-        console.log(`first name : ${t.first_name} last name : ${t.last_name} `);
-        console.log(`avatar : ${t.avatar}  `);
-        console.log('\n')
+    if (error) console.log('Unable to connect to Google Servers');
+    else {
+        // iterating foreach function call for all the elements in body type
+        body.data.forEach(function (t) {
+            console.log('-----------------------')
+            console.log('\n')
+            console.log(`id: ${t.id} `);
+            console.log(`first name : ${t.first_name} last name : ${t.last_name} `);
+            console.log(`avatar : ${t.avatar}  `);
+            console.log('\n')
 
-    })
+        })
+    }
     // the data that comes back from http request is called - body
     // console.log(JSON.stringify(response, undefined, 2))
 
