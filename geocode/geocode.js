@@ -1,6 +1,6 @@
 const request = require('request');
 
-const geocodeAdress = (address) =>{
+const geocodeAdress = (address, callback) => {
 
     var encodedAddress = encodeURIComponent(address)
 
@@ -17,16 +17,19 @@ const geocodeAdress = (address) =>{
     }, (error, response, body) => {
 
 
-        if (error) console.log('Unable to connect to Google Servers');
-        else {
+        if (error) {
+            callback('Unable to connect to Google Servers');
+        } else {
             // iterating foreach function call for all the elements in body type
             body.data.forEach(function (t) {
-                console.log('-----------------------')
-                console.log('\n')
-                console.log(`id: ${t.id} `);
-                console.log(`first name : ${t.first_name} last name : ${t.last_name} `);
-                console.log(`avatar : ${t.avatar}  `);
-                console.log('\n')
+
+                callback(undefined, {
+                    firstname : t.first_name,
+                    lastname : t.last_name,
+                    avatar : t.avatar
+                })
+
+
 
             })
         }
